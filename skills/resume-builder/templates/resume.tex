@@ -1,0 +1,60 @@
+% ATS-friendly single-column resume scaffold.
+% Compile: pdflatex <file>.tex   or   latexmk -pdf <file>.tex
+\documentclass[11pt,letterpaper]{article}
+
+\usepackage[margin=0.6in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{titlesec}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlist[itemize]{leftmargin=*, itemsep=2pt, topsep=3pt, parsep=0pt}
+\titlespacing*{\section}{0pt}{10pt}{4pt}
+\titleformat{\section}{\large\bfseries\uppercase}{\thesection}{0pt}{}[\vspace{2pt}\hrule\vspace{4pt}]
+\hypersetup{colorlinks=false, pdfborder={0 0 0}}
+
+\begin{document}
+
+% --- HEADER ---
+\begin{center}
+  {\LARGE\bfseries FULL NAME}\\[4pt]
+  City, ST\ |\ phone\ |\ email\ |\ linkedin.com/in/handle\ |\ github.com/handle\ |\ portfolio.example
+\end{center}
+
+% --- PROFESSIONAL SUMMARY ---
+\section*{Professional Summary}
+% 3--4 lines tailored to the JD. No first person.
+
+\section*{Skills}
+\textbf{Languages:} \ldots\\
+\textbf{Frameworks:} \ldots\\
+\textbf{Tools:} \ldots\\
+\textbf{Other:} \ldots
+
+\section*{Experience}
+
+\textbf{Job Title} \hfill Month YYYY -- Month YYYY\\
+\textit{Company Name} \hfill City, ST
+\begin{itemize}
+  \item Action verb + what you built/owned + tech + measurable result.
+  \item Action verb + what you built/owned + tech + measurable result.
+  \item Action verb + what you built/owned + tech + measurable result.
+\end{itemize}
+
+\section*{Projects}
+
+\textbf{Project Name} \hfill https://github.com/user/repo
+\begin{itemize}
+  \item Action verb + outcome + relevant JD tech.
+\end{itemize}
+
+\section*{Education}
+
+\textbf{Degree, Major} \hfill Month YYYY\\
+\textit{School Name} \hfill City, ST
+
+\end{document}
