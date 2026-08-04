@@ -6,11 +6,11 @@ Score the draft resume before delivery. Require **≥ 95**.
 
 | Pts | Criterion |
 |----:|-----------|
-| 10 | Single-column layout; no tables/text boxes for body content |
-| 10 | Standard section headings only (Professional Summary, Skills, Experience, Education, Projects) |
-| 8  | Contact info as plain text at top (name, phone, email, location, LinkedIn/GitHub/portfolio URLs from reference.md) |
-| 6  | No images, icons, shapes, or decorative lines required to understand content |
-| 6  | Dates and job titles clearly adjacent to employer names (Title \| Company \| Dates pattern) |
+| 10 | Single-column haider template layout (tabular* entry rows OK; no multi-column body or text boxes) |
+| 10 | Standard section headings only (PROFESSIONAL SUMMARY, EXPERIENCE, PROJECTS, EDUCATION, SKILLS) |
+| 8  | Contact info at top with name, phone, email, location, plus LinkedIn/GitHub/portfolio from reference.md (icons + `\texttt` OK) |
+| 6  | No photos/charts; Font Awesome + section rules from the template are allowed; content still readable as plain text |
+| 6  | Dates and titles clearly paired via `\resumeSubheading` / `\resumeProjectHeading` (Company/Title/Dates adjacent) |
 
 ## Keyword alignment (40)
 

@@ -1,60 +1,187 @@
-% ATS-friendly single-column resume scaffold.
+%-------------------------
+% Resume in Latex
+% Based off of: https://github.com/jakeryang/resume
+% License : MIT
+% Scaffold for resume-builder — replace lorem ipsum with facts from reference.md + JD.
+% Fonts (do not change): tgheros (body), FiraMono (monospace contact), fontawesome5 (icons)
 % Compile: pdflatex <file>.tex   or   latexmk -pdf <file>.tex
-\documentclass[11pt,letterpaper]{article}
+%-------------------------
 
-\usepackage[margin=0.6in]{geometry}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{enumitem}
-\usepackage{hyperref}
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
 \usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
 
-\pagestyle{empty}
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{0pt}
-\setlist[itemize]{leftmargin=*, itemsep=2pt, topsep=3pt, parsep=0pt}
-\titlespacing*{\section}{0pt}{10pt}{4pt}
-\titleformat{\section}{\large\bfseries\uppercase}{\thesection}{0pt}{}[\vspace{2pt}\hrule\vspace{4pt}]
-\hypersetup{colorlinks=false, pdfborder={0 0 0}}
+% fontawesome
+\usepackage{fontawesome5}
+
+% fixed width
+\usepackage[scale=0.90,lf]{FiraMono}
+
+% light-grey
+\definecolor{light-grey}{gray}{0.83}
+\definecolor{dark-grey}{gray}{0.3}
+\definecolor{text-grey}{gray}{.08}
+
+\DeclareRobustCommand{\ebseries}{\fontseries{eb}\selectfont}
+\DeclareTextFontCommand{\texteb}{\ebseries}
+
+% custom underline
+\usepackage{contour}
+\usepackage[normalem]{ulem}
+\renewcommand{\ULdepth}{1.8pt}
+\contourlength{0.8pt}
+\newcommand{\myuline}[1]{%
+  \uline{\phantom{#1}}%
+  \llap{\contour{white}{#1}}%
+}
+
+% custom font: helvetica-style — keep tgheros + FiraMono as-is
+\usepackage{tgheros}
+\renewcommand*\familydefault{\sfdefault}
+\usepackage[T1]{fontenc}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{0in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+    \bfseries \vspace{2pt} \raggedright \large
+}{}{0em}{}[\color{light-grey} {\titlerule[2pt]} \vspace{-4pt}]
+
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-1pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & {\color{dark-grey}\small #2}\vspace{1pt}\\
+      \textit{#3} & {\color{dark-grey} \small #4}\\
+    \end{tabular*}\vspace{-4pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+      #1 & {\color{dark-grey}\small #2} \\
+    \end{tabular*}\vspace{-4pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{0pt}}
+
+\color{text-grey}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
-% --- HEADER ---
+%----------HEADING----------
+% Use \texttt{...} for phone/email/handles (FiraMono). Keep Font Awesome icons.
 \begin{center}
-  {\LARGE\bfseries FULL NAME}\\[4pt]
-  City, ST\ |\ phone\ |\ email\ |\ linkedin.com/in/handle\ |\ github.com/handle\ |\ portfolio.example
+    \textbf{\Huge Lorem Ipsum} \\ \vspace{5pt}
+    \small \faPhone* \texttt{000.000.0000} \hspace{1pt} $|$
+    \hspace{1pt} \faEnvelope \hspace{2pt} \texttt{lorem@ipsum.dolor} \hspace{1pt} $|$
+    \hspace{1pt} \faGithub \hspace{2pt} \texttt{github.com/lorem} \hspace{1pt} $|$
+    \hspace{1pt} \faGlobe \hspace{2pt} \texttt{lorem.ipsum} \hspace{1pt} $|$
+    \hspace{1pt} \faMapMarker* \hspace{2pt}\texttt{Lorem, Ipsum}
+    \\ \vspace{-3pt}
 \end{center}
 
-% --- PROFESSIONAL SUMMARY ---
-\section*{Professional Summary}
-% 3--4 lines tailored to the JD. No first person.
+%-----------PROFESSIONAL SUMMARY-----------
+\section{PROFESSIONAL SUMMARY}
+\small{
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+}
 
-\section*{Skills}
-\textbf{Languages:} \ldots\\
-\textbf{Frameworks:} \ldots\\
-\textbf{Tools:} \ldots\\
-\textbf{Other:} \ldots
+%-----------EXPERIENCE-----------
+\section{EXPERIENCE}
+  \resumeSubHeadingListStart
 
-\section*{Experience}
+    \resumeSubheading
+      {Lorem Ipsum Corp}{Jan. 2020 -- Present}
+      {Dolor Sit Amet}{Lorem, Ipsum}
+      \resumeItemListStart
+        \resumeItem{Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.}
+        \resumeItem{Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.}
+        \resumeItem{Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.}
+      \resumeItemListEnd
 
-\textbf{Job Title} \hfill Month YYYY -- Month YYYY\\
-\textit{Company Name} \hfill City, ST
-\begin{itemize}
-  \item Action verb + what you built/owned + tech + measurable result.
-  \item Action verb + what you built/owned + tech + measurable result.
-  \item Action verb + what you built/owned + tech + measurable result.
-\end{itemize}
+  \resumeSubHeadingListEnd
 
-\section*{Projects}
+%-----------PROJECTS-----------
+\section{PROJECTS}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{Lorem Project} $|$ \href{https://example.com}{\myuline{example.com/lorem}}}{Jan. 2021 -- Dec. 2021}
+          \resumeItemListStart
+            \resumeItem{Lorem ipsum dolor sit amet, consectetur adipiscing elit.}
+            \resumeItem{Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
 
-\textbf{Project Name} \hfill https://github.com/user/repo
-\begin{itemize}
-  \item Action verb + outcome + relevant JD tech.
-\end{itemize}
+%-----------EDUCATION-----------
+\section{EDUCATION}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Universitas Lorem Ipsum}{Aug. 2016 -- May 2020}
+      {Bachelor of Ipsum in Dolor}{Lorem, Ipsum}
+  \resumeSubHeadingListEnd
 
-\section*{Education}
-
-\textbf{Degree, Major} \hfill Month YYYY\\
-\textit{School Name} \hfill City, ST
+%-----------SKILLS-----------
+\section{SKILLS}
+ \begin{itemize}[leftmargin=0in, label={}]
+    \small{\item{
+     \textbf{Languages} {: Lorem, Ipsum, Dolor}\vspace{2pt} \\
+     \textbf{Frameworks} {: Sit, Amet, Consectetur}\vspace{2pt} \\
+     \textbf{Tools}     {: Adipiscing, Elit, Sed}
+    }}
+ \end{itemize}
 
 \end{document}

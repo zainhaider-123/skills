@@ -65,7 +65,7 @@ Map each hard requirement to evidence in `reference.md`. Prefer roles/projects w
 
 From the **Personal** section of [reference.md](reference.md):
 
-1. **Header links** — include `github`, `website` and/or `portfolio`, plus `linkedin` (and `other_links` only if space and JD-relevant). Plain-text URLs only; no icons.
+1. **Header links** — include `github`, `website` and/or `portfolio`, plus `linkedin` (and `other_links` only if space and JD-relevant). Use Font Awesome icons + `\texttt{...}` as in the template.
 2. **GitHub projects** — rank `github_projects` by JD fit (technologies, topics, description). Select **2–4** strongest matches.
 3. Merge with the **Projects** section: dedupe by name/URL; prefer the richer bullet/highlight set. Do not list the same project twice.
 4. For each selected repo, write ATS bullets from `description` + `highlights` + `technologies`, emphasizing JD keywords that are truthful.
@@ -92,14 +92,19 @@ Do not use first person ("I"). Do not claim skills absent from `reference.md`.
 
 ### Step 7: Output TeX
 
-1. Start from [templates/resume.tex](templates/resume.tex) (path relative to this skill).
+1. Start from [templates/resume.tex](templates/resume.tex) (haider / Jake Yang style). **Do not change fonts** — keep `tgheros` (body), `FiraMono` (monospace contact via `\texttt`), and `fontawesome5` icons.
 2. **Write output in the directory where the skill was invoked** — the user's current workspace / project cwd — **not** inside this skill folder.
    - Default: `<cwd>/<role-slug>-resume.tex` (e.g. `./senior-backend-engineer-resume.tex`).
    - If the user asks for a subfolder, use `<cwd>/<that-folder>/<role-slug>-resume.tex` and create it if needed.
    - Never write under the skill's own `output/` or skill package path.
 3. Use **ASCII-safe** TeX for body text where possible; escape `&`, `%`, `#`, `_`, `$` in content.
-4. Keep layout **single column**, standard section headings, no icons, no photos, no tables for body content, no text boxes, no multi-column skill grids.
-5. Header must include available links from Personal (GitHub, website/portfolio) alongside contact fields.
+4. Preserve the template macros and structure:
+   - Header: centered name + `\faPhone*` / `\faEnvelope` / `\faGithub` / `\faGlobe` / `\faMapMarker*` with `\texttt{...}` values
+   - Sections: `PROFESSIONAL SUMMARY`, `EXPERIENCE`, `PROJECTS`, `EDUCATION`, `SKILLS` (omit empty ones)
+   - Roles: `\resumeSubheading{Company}{Dates}{Title}{Location}` + `\resumeItem{...}`
+   - Projects: `\resumeProjectHeading{\textbf{Name} $|$ \href{url}{\myuline{label}}}{Dates}` + items
+   - Skills: labeled lines (`Languages` / `Frameworks` / `Tools` / …) inside the template's itemize block
+5. Header must include available links from Personal (GitHub, website/portfolio, LinkedIn) alongside contact fields.
 6. Tell the user the absolute path of the written `.tex` file.
 
 ### Step 8: ATS score (≥ 95)
@@ -111,10 +116,10 @@ Score with the checklist in [ats-checklist.md](ats-checklist.md). Sum points; re
 - Facts only from [reference.md](reference.md) + user corrections in-chat.
 - **JD relevance over completeness** — do not dump all skills, projects, or bullets from `reference.md`. Select and emphasize what matches the posting.
 - Verbatim JD keyword phrases when they match real experience (same casing as common skill names is fine).
-- Standard ATS section names: `Professional Summary`, `Skills`, `Experience`, `Education`, `Projects` (include only sections with content).
+- Standard section names (uppercase in TeX): `PROFESSIONAL SUMMARY`, `EXPERIENCE`, `PROJECTS`, `EDUCATION`, `SKILLS` (include only sections with content).
 - Feature only GitHub/projects listed in `reference.md`; pick the JD-best 2–4.
 - Skills on the resume must come from the Skills section, filtered to JD overlap.
-- No graphics, charts, headers/footers with critical info, or fancy fonts in the template.
+- Keep template fonts and chrome: `tgheros`, `FiraMono`, Font Awesome icons, light-grey section rules. No photos, charts, or extra decorative graphics.
 - Output is always a `.tex` file in the **invocation cwd** (workspace where the skill was called), never inside this skill directory. User can compile with `pdflatex` / `latexmk`.
 
 ## Additional resources
