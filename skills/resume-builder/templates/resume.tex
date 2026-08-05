@@ -4,7 +4,9 @@
 % License : MIT
 % Scaffold for resume-builder — replace lorem ipsum with facts from reference.md + JD.
 % Fonts (do not change): tgheros (body), FiraMono (monospace contact), fontawesome5 (icons)
-% Compile: pdflatex <file>.tex   or   latexmk -pdf <file>.tex
+% Overleaf: Menu → Compiler → pdfLaTeX (preferred). Glyph helpers are pdfTeX-only and
+% guarded with iftex so XeLaTeX/LuaLaTeX do not error on \pdfglyphtounicode.
+% Local: pdflatex <file>.tex   or   latexmk -pdf <file>.tex
 %-------------------------
 
 \documentclass[letterpaper,11pt]{article}
@@ -20,7 +22,11 @@
 \usepackage{fancyhdr}
 \usepackage[english]{babel}
 \usepackage{tabularx}
-\input{glyphtounicode}
+\usepackage{iftex}
+\ifPDFTeX
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\fi
 
 % fontawesome
 \usepackage{fontawesome5}
@@ -73,8 +79,6 @@
 \titleformat{\section}{
     \bfseries \vspace{2pt} \raggedright \large
 }{}{0em}{}[\color{light-grey} {\titlerule[2pt]} \vspace{-4pt}]
-
-\pdfgentounicode=1
 
 %-------------------------
 % Custom commands

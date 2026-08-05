@@ -105,7 +105,12 @@ Do not use first person ("I"). Do not claim skills absent from `reference.md`.
    - Projects: `\resumeProjectHeading{\textbf{Name} $|$ \href{url}{\myuline{label}}}{Dates}` + items
    - Skills: labeled lines (`Languages` / `Frameworks` / `Tools` / …) inside the template's itemize block
 5. Header must include available links from Personal (GitHub, website/portfolio, LinkedIn) alongside contact fields.
-6. Tell the user the absolute path of the written `.tex` file.
+6. **Overleaf-safe preamble (required)** — copy the template preamble as-is. Do not “simplify” or restore bare pdfTeX-only calls:
+   - Keep `\usepackage{iftex}` and the `\ifPDFTeX ... \fi` guard around `glyphtounicode` / `\pdfgentounicode`.
+   - Never emit unguarded `\input{glyphtounicode}` or bare `\pdfgentounicode=1` (breaks XeLaTeX/LuaLaTeX on Overleaf with `\pdfglyphtounicode` undefined).
+   - Do not add XeLaTeX-only packages (`fontspec`, `unicode-math`) or swap engines in the file.
+   - Prefer packages already in the template (`tgheros`, `FiraMono`, `fontawesome5`, `hyperref`, etc.).
+7. Tell the user the absolute path of the written `.tex` file, and that Overleaf should use **Menu → Compiler → pdfLaTeX**.
 
 ### Step 8: ATS score (≥ 95)
 
@@ -120,10 +125,11 @@ Score with the checklist in [ats-checklist.md](ats-checklist.md). Sum points; re
 - Feature only GitHub/projects listed in `reference.md`; pick the JD-best 2–4.
 - Skills on the resume must come from the Skills section, filtered to JD overlap.
 - Keep template fonts and chrome: `tgheros`, `FiraMono`, Font Awesome icons, light-grey section rules. No photos, charts, or extra decorative graphics.
-- Output is always a `.tex` file in the **invocation cwd** (workspace where the skill was called), never inside this skill directory. User can compile with `pdflatex` / `latexmk`.
+- Output is always a `.tex` file in the **invocation cwd** (workspace where the skill was called), never inside this skill directory.
+- **Overleaf is the default compile target.** Keep the `iftex`-guarded glyph mapping from the template; never introduce bare `\pdfglyphtounicode` / `\pdfgentounicode` / unguarded `\input{glyphtounicode}`. Tell the user to compile with **pdfLaTeX** on Overleaf (also works locally via `pdflatex` / `latexmk -pdf`).
 
 ## Additional resources
 
 - Blank form to commit: [reference.template.md](reference.template.md) (copy to `reference.md`; that file is gitignored)
 - ATS scoring: [ats-checklist.md](ats-checklist.md)
-- TeX scaffold: [templates/resume.tex](templates/resume.tex)
+- TeX scaffold: [templates/resume.tex](templates/resume.tex) — Overleaf-safe preamble (pdfTeX glyph helpers behind `\ifPDFTeX`)
