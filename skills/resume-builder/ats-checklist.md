@@ -25,14 +25,15 @@ Score the draft resume before delivery. Require **≥ 95**.
 
 | Pts | Criterion |
 |----:|-----------|
-| 8  | Most bullets follow Action + scope + tech + measurable result |
-| 6  | No first-person pronouns; no fluff ("responsible for", "team player") |
-| 6  | Length appropriate (≈1 page default); consistent tense (past for old roles, present for current) |
+| 8  | Every experience/project bullet is Action + scope + tech + **a numeral** + result; one outcome per bullet |
+| 6  | No first-person pronouns; no fluff ("responsible for", "team player"); no action verb used 3+ times |
+| 6  | One page; early-career body **~500 words** (470–540); past tense for old roles, present for current |
 
 ## Scoring
 
 1. Award points only when the criterion is clearly met.
 2. If keyword alignment fails on a must-have the candidate **does** have in references, fix the TeX and re-score.
 3. If a must-have is **not** in references, do not invent it; note the gap to the user and score honestly (may stay below 95 — tell the user which skills are missing).
+4. After this score, run [content-checklist.md](content-checklist.md). ATS ≥ 95 is not enough if numbers, verb repeats, or length fail.
 
 Report as: `ATS self-score: NN/100` plus a one-line list of deductions if any.

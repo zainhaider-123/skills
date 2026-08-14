@@ -19,7 +19,7 @@ skills/
 
 | Skill | Description |
 |-------|-------------|
-| [resume-builder](skills/resume-builder/) | ATS-optimized LaTeX resume tailored to a job description |
+| [resume-builder](skills/resume-builder/) | ATS-optimized LaTeX resume tailored to a JD, with quantified bullets, unique verbs, and a ~500-word one-page target |
 
 ## Using a skill
 
